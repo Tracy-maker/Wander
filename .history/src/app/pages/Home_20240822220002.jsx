@@ -27,7 +27,7 @@ const Home = () => {
           Our app blends sophisticated technology with an intuitive interface to provide the most accurate and up-to-date information, making your journey brighter and easier. Discover new horizons with WanderWhiz.
         </p>
         <button
-          onClick={() => navigate("/weather")}
+          onClick={() => navigate("/main")}
           className="px-8 py-4 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition duration-300"
         >
           Get Started
