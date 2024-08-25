@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Ignore local Firebase settings (if not needed in version control)
+.firebase/
+.firebaserc
+
+# If you're using Tailwind CSS and generated a config file, you might ignore it
+tailwind.config.js
+
+# Ignore IDE/editor config files
+.idea/
+.vscode/
