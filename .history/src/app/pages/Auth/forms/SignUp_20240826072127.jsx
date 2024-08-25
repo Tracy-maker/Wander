@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
-import AuthLayout from "../AuthLayout";
+import AuthLayout from "../../../layouts/AuthLayout"; // Adjust the import path according to your project structure
 
-
-const Login = () => {
+const SignUp = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+  const passwordConfirmRef = useRef();
+  const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useNavigate();
@@ -15,14 +15,22 @@ const Login = () => {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match");
+    }
+
+    if (!emailRef.current.value.endsWith(".com")) {
+      return setError("Email must end with '.com'");
+    }
+
     try {
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+      await signup(emailRef.current.value, passwordRef.current.value);
       history("/");
     } catch (error) {
       console.error(error);
-      setError("Failed to login: " + error.message);
+      setError("Failed to create an account: " + error.message);
     }
     setLoading(false);
   }
@@ -30,7 +38,7 @@ const Login = () => {
   return (
     <AuthLayout>
       <h2 className="text-4xl font-bold text-center text-white mb-8 animate-fadeIn">
-        Welcome Back
+        Sign Up
       </h2>
       {error && (
         <div className="text-red-400 text-center font-medium mb-4">
@@ -68,33 +76,40 @@ const Login = () => {
             required
           />
         </div>
+        <div className="mb-6">
+          <label
+            htmlFor="password-confirm"
+            className="block text-sm font-medium text-white"
+          >
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            id="password-confirm"
+            className="w-full mt-2 px-4 py-2 bg-white bg-opacity-20 text-white placeholder-gray-200 border border-white border-opacity-30 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-400 transition duration-300 ease-in-out"
+            ref={passwordConfirmRef}
+            required
+          />
+        </div>
         <button
           disabled={loading}
           className="w-full bg-pink-500 text-white py-3 rounded-lg font-semibold hover:bg-pink-600 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-400 animate-bounce"
           type="submit"
         >
-          Log In
+          Sign Up
         </button>
       </form>
-      <div className="mt-4 text-center">
-        <Link
-          to="/forgetPassword"
-          className="text-white hover:text-pink-300 transition duration-300 ease-in-out"
-        >
-          Forgot your password?
-        </Link>
-      </div>
       <div className="mt-6 text-center text-white">
-        Don’t have an account?&nbsp;
+        Already have an account?&nbsp;
         <Link
-          to="/Signup"
+          to="/Login"
           className="font-semibold text-white underline hover:text-pink-300 transition duration-300 ease-in-out"
         >
-          Sign Up
+          Log In
         </Link>
       </div>
     </AuthLayout>
   );
 };
 
-export default Login;
+export default SignUp;

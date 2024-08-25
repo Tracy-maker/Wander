@@ -1,8 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
-import AuthLayout from "../AuthLayout";
-
+import AuthLayout from "../../../layouts/AuthLayout";  // Adjust the import path according to your project structure
 
 const Login = () => {
   const emailRef = useRef();
@@ -85,16 +84,4 @@ const Login = () => {
         </Link>
       </div>
       <div className="mt-6 text-center text-white">
-        Don’t have an account?&nbsp;
-        <Link
-          to="/Signup"
-          className="font-semibold text-white underline hover:text-pink-300 transition duration-300 ease-in-out"
-        >
-          Sign Up
-        </Link>
-      </div>
-    </AuthLayout>
-  );
-};
-
-export default Login;
+        Don’t hav

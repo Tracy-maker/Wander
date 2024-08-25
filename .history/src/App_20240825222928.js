@@ -41,7 +41,7 @@ function App() {
                 } 
               />
               <Route 
-                path="/weather" 
+                path="/main" 
                 element={
                   <>
                     <Navbar />
@@ -50,7 +50,7 @@ function App() {
                 } 
               />
               <Route 
-                path="/maps" 
+                path="/resources" 
                 element={
                   <>
                     <Navbar />

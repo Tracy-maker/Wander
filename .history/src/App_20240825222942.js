@@ -41,7 +41,7 @@ function App() {
                 } 
               />
               <Route 
-                path="/weather" 
+                path="/main" 
                 element={
                   <>
                     <Navbar />

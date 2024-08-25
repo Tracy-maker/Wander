@@ -1,8 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
-import AuthLayout from "../AuthLayout";
-
+import AuthLayout from "../../../layouts/AuthLayout";  // Adjust the import path according to your project structure
 
 const Login = () => {
   const emailRef = useRef();
