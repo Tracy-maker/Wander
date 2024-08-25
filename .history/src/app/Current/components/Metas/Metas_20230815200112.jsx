@@ -1,0 +1,13 @@
+import Meta from "./components/Meta/Meta";
+
+const Metas = ({data}) => {
+  return (
+    <div className="flex-col justify-center text-center">
+      <Meta title="HUMIDITY">{data.main.humidity} %</Meta>
+      <div className="flex-col mx-8 border-2 border-white opacity-60"></div>
+      <Meta title="WIND">{data.wind.speed} m/s</Meta>
+    </div>
+  );
+};
+
+export default Metas;
