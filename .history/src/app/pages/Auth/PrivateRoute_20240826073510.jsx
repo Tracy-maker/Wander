@@ -2,8 +2,7 @@ import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
-
+import Footer from "../../components/Footer/Footer"; // Import the Footer component
 
 const PrivateRoute = () => {
   const { currentUser } = useAuth();
@@ -18,7 +17,7 @@ const PrivateRoute = () => {
       <div className="flex-grow">
         <Outlet />
       </div>
-      <Footer /> 
+      <Footer /> {/* Include the Footer here */}
     </div>
   );
 };
