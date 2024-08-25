@@ -33,9 +33,16 @@ const Weather = () => {
     >
       {/* Subtle Blur Background */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-md z-0"></div>
-      <div className="relative z-10 w-full max-w-4xl mx-auto mt-[-10rem] flex justify-center">
-        <div className="w-full bg-white bg-opacity-20 p-4 rounded-lg shadow-lg backdrop-blur-sm">
-          <Search onSearchChange={handleOnSearchChange} className="text-2xl" />
+
+      <div className="relative z-10 w-full max-w-6xl mx-auto pt-8 mt-[-1rem] px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="flex-1 text-left">
+          <div className="text-sm sm:text-base lg:text-lg text-white font-light tracking-wider mb-8"></div>
+          <div className="w-full max-w-2xl bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-sm">
+            <Search
+              onSearchChange={handleOnSearchChange}
+              className="text-2xl"
+            />
+          </div>
         </div>
       </div>
 
