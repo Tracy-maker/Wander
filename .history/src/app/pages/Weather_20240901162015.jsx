@@ -49,7 +49,9 @@ const Weather = () => {
     Promise.all([getCurrentWeather(lat, lon), getDailyForecast(lat, lon)])
       .then(([currentWeatherResponse, forecastResponse]) => {
         if (currentWeatherResponse && forecastResponse) {
-          const city = currentWeatherResponse.name || "Unknown Location";
+          const city = isCurrentLocation
+            ? currentWeatherResponse.name || "Current Location"
+            : "Searched Location";
           setCurrentWeather({
             city: city,
             ...currentWeatherResponse,

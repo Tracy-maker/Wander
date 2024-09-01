@@ -16,16 +16,10 @@ const Weather = () => {
 
   const handleOnSearchChange = (selectedOption) => {
     if (selectedOption && selectedOption.value) {
-      const coordinates = selectedOption.value.split(" ");
-      if (coordinates.length === 2) {
-        const [lat, lon] = coordinates;
-        fetchWeatherForLocation(lat, lon);
-      } else {
-        console.error("Invalid coordinates format:", selectedOption.value);
-      }
+      const [lat, lon] = selectedOption.value.split(" ");
+      fetchWeatherForLocation(lat, lon);
     }
   };
-  
 
   const handleCurrentLocationClick = () => {
     if (navigator.geolocation) {
@@ -49,13 +43,15 @@ const Weather = () => {
     Promise.all([getCurrentWeather(lat, lon), getDailyForecast(lat, lon)])
       .then(([currentWeatherResponse, forecastResponse]) => {
         if (currentWeatherResponse && forecastResponse) {
-          const city = currentWeatherResponse.name || "Unknown Location";
+          const city = isCurrentLocation
+            ? currentWeatherResponse.name || "Current Location"
+            : "Searched Location";
           setCurrentWeather({
             city: city,
             ...currentWeatherResponse,
           });
           setForecast({ city: city, ...forecastResponse });
-          setCurrentCity(city); 
+          setCurrentCity(city); // 更新当前城市名称
         }
       })
       .catch((err) => {

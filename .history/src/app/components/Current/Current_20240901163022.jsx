@@ -8,7 +8,6 @@ const Current = ({ data }) => {
 
   useEffect(() => {
     if (data) {
-      console.log("Current weather data:", data);
       setLoading(false);
     }
   }, [data]);
