@@ -73,7 +73,7 @@ const Weather = () => {
   return (
     <div
       className="min-h-screen w-screen flex flex-col justify-center items-center bg-cover bg-center relative p-4 overflow-y-auto"
-      style={{ backgroundImage: `url(${p1})` }} 
+      style={{ backgroundImage: `url(${p1})`, paddingTop: "200px" }} 
     >
       <div className="flex flex-col md:flex-row w-full max-w-6xl items-center justify-between space-y-6 md:space-y-0 md:space-x-8 sm:mt-20">
         <div className="w-full md:w-1/3">
@@ -83,7 +83,7 @@ const Weather = () => {
           />
         </div>
 
-        <div className="w-full md:w-2/3 bg-white bg-opacity-90 rounded-2xl shadow-xl p-1 text-gray-800">
+        <div className="w-full md:w-2/3 bg-white bg-opacity-90 rounded-2xl shadow-xl p-6 text-gray-800">
           {currentWeather ? (
             <Current data={currentWeather} />
           ) : (
@@ -92,8 +92,8 @@ const Weather = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-6xl mt-4">
-        <div className="bg-white bg-opacity-90 rounded-2xl shadow-xl p-1">
+      <div className="w-full max-w-6xl mt-8">
+        <div className="bg-white bg-opacity-90 rounded-2xl shadow-xl p-8">
           {forecast ? (
             <Forecast data={forecast} />
           ) : (
@@ -101,6 +101,10 @@ const Weather = () => {
           )}
         </div>
       </div>
+
+      {/* 人为增加一些额外内容以确保出现滚动条 */}
+      <div className="h-32"></div> {/* 增加占位符内容 */}
+
     </div>
   );
 };

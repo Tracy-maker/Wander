@@ -25,6 +25,7 @@ const Weather = () => {
       }
     }
   };
+  
 
   const handleCurrentLocationClick = () => {
     if (navigator.geolocation) {
@@ -54,7 +55,7 @@ const Weather = () => {
             ...currentWeatherResponse,
           });
           setForecast({ city: city, ...forecastResponse });
-          setCurrentCity(city);
+          setCurrentCity(city); 
         }
       })
       .catch((err) => {
@@ -72,33 +73,49 @@ const Weather = () => {
 
   return (
     <div
-      className="min-h-screen w-screen flex flex-col justify-center items-center bg-cover bg-center relative p-4 overflow-y-auto"
-      style={{ backgroundImage: `url(${p1})` }} 
+      className="h-screen w-screen flex flex-col justify-center items-center bg-cover bg-center relative"
+      style={{ backgroundImage: `url(${p1})`, marginTop: "40px" }}
     >
-      <div className="flex flex-col md:flex-row w-full max-w-6xl items-center justify-between space-y-6 md:space-y-0 md:space-x-8 sm:mt-20">
-        <div className="w-full md:w-1/3">
-          <LocationSearch
-            onSearchChange={handleOnSearchChange}
-            onCurrentLocationClick={handleCurrentLocationClick}
-          />
-        </div>
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-md z-0"></div>
 
-        <div className="w-full md:w-2/3 bg-white bg-opacity-90 rounded-2xl shadow-xl p-1 text-gray-800">
-          {currentWeather ? (
-            <Current data={currentWeather} />
-          ) : (
-            <Loading />
-          )}
-        </div>
+      <div className="relative z-10 w-full max-w-4xl mx-auto mt-[-8rem] flex justify-center items-center space-x-4">
+        <LocationSearch
+          onSearchChange={handleOnSearchChange}
+          onCurrentLocationClick={handleCurrentLocationClick}
+        />
       </div>
 
-      <div className="w-full max-w-6xl mt-4">
-        <div className="bg-white bg-opacity-90 rounded-2xl shadow-xl p-1">
-          {forecast ? (
-            <Forecast data={forecast} />
+      <div className="relative z-10 w-full max-w-6xl mx-auto flex items-start space-x-8 mt-8 mb-[-25px]">
+        <div className="w-2/3 bg-white bg-opacity-90 rounded-2xl shadow-xl p-6 text-gray-800">
+          {currentWeather || forecast ? (
+            <>
+              {currentWeather && (
+                <div className="mb-6">
+                  <Current data={currentWeather} />
+                </div>
+              )}
+              {forecast && (
+                <div>
+                  <Forecast data={forecast} />
+                </div>
+              )}
+            </>
           ) : (
             <Loading />
           )}
+        </div>
+
+        <div className="w-1/3 flex flex-col space-y-6">
+          <div className="bg-white bg-opacity-90 rounded-2xl shadow-xl p-6 text-gray-800">
+            <h3 className="text-xl font-semibold mb-4">Current City</h3>
+            <p>{currentCity}</p> 
+          </div>
+          <div className="bg-white bg-opacity-90 rounded-2xl shadow-xl p-6 text-gray-800">
+            <h3 className="text-xl font-semibold mb-4">
+              Additional Component 2
+            </h3>
+            <p>This is where your second additional component content goes.</p>
+          </div>
         </div>
       </div>
     </div>

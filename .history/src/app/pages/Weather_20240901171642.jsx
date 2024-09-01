@@ -83,7 +83,7 @@ const Weather = () => {
           />
         </div>
 
-        <div className="w-full md:w-2/3 bg-white bg-opacity-90 rounded-2xl shadow-xl p-1 text-gray-800">
+        <div className="w-full md:w-2/3 bg-white bg-opacity-90 rounded-2xl shadow-xl p-3 text-gray-800">
           {currentWeather ? (
             <Current data={currentWeather} />
           ) : (
@@ -92,8 +92,8 @@ const Weather = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-6xl mt-4">
-        <div className="bg-white bg-opacity-90 rounded-2xl shadow-xl p-1">
+      <div className="w-full max-w-6xl mt-8">
+        <div className="bg-white bg-opacity-90 rounded-2xl shadow-xl p-8">
           {forecast ? (
             <Forecast data={forecast} />
           ) : (
