@@ -50,15 +50,21 @@ const Day = ({ data }) => {
   };
 
   return (
-    <div className="flex flex-row justify-center items-center space-x-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
       {nextFiveDaysData.map((item, index) => (
-        <div key={index} className="flex flex-col justify-center items-center p-6 bg-blue-100 rounded-lg shadow-md transition-shadow duration-300">
-          <div className="text-lg font-medium text-gray-700 mb-2">{forecastDays[index]}</div>
-          <div className="my-2">
+        <div
+          key={index}
+          className="flex flex-col items-center p-4 bg-blue-500 text-white rounded-lg shadow-md"
+        >
+          <div className="text-lg font-medium">{forecastDays[index]}</div>
+          <div className="flex justify-center mt-2">
             <WeatherImage weather={item.weather[0]} />
           </div>
-          <div className="text-gray-600">
-            <Temperature>{`${parseFloat(item.main.temp_min).toFixed(1)}° / ${parseFloat(item.main.temp_max).toFixed(1)}°`}</Temperature>
+          <div className="flex justify-center mt-4 text-xl font-semibold">
+            <Temperature>
+              {`${parseFloat(item.main.temp_min).toFixed(1)}°C`} /{" "}
+              {`${parseFloat(item.main.temp_max).toFixed(1)}°C`}
+            </Temperature>
           </div>
         </div>
       ))}

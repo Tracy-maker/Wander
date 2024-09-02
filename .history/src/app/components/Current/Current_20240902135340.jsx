@@ -24,11 +24,11 @@ const Current = ({ data }) => {
   return (
     <div className="flex flex-col md:flex-row py-6 px-4 md:px-8 bg-gradient-to-r from-blue-500 to-blue-400 text-white rounded-lg shadow-lg">
       <div className="flex flex-col lg:w-2/3 justify-center space-y-4">
-   
+        {/* 温度显示 */}
         <div className="text-6xl md:text-8xl font-bold text-center lg:text-left">
-          <Temperature>{Math.round(data.main.temp)}</Temperature>C
+          <Temperature>{Math.round(data.main.temp)}</Temperature>°C
         </div>
-
+        {/* 天气状态 */}
         <div className="flex items-center justify-center lg:justify-start space-x-2 text-xl md:text-2xl">
           <img
             src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
@@ -37,11 +37,11 @@ const Current = ({ data }) => {
           />
           <SubText>{data.weather[0].main}</SubText>
         </div>
-      
+        {/* 其他元数据 */}
         <Metas data={data} />
       </div>
-     
-      <div className="lg:w-1/3 flex items-center justify-center lg:justify-end text-4xl md:text-5xl lg:text-6xl font-semibold text-center mt-4 md:mt-0 lg:-mt-20">
+      {/* 城市名称 */}
+      <div className="lg:w-1/3 flex items-center justify-center lg:justify-end text-4xl md:text-5xl lg:text-6xl font-semibold text-center mt-4 md:mt-0 lg:-mt-2">
         {data.city}
       </div>
     </div>

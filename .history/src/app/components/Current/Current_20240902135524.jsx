@@ -41,7 +41,7 @@ const Current = ({ data }) => {
         <Metas data={data} />
       </div>
      
-      <div className="lg:w-1/3 flex items-center justify-center lg:justify-end text-4xl md:text-5xl lg:text-6xl font-semibold text-center mt-4 md:mt-0 lg:-mt-20">
+      <div className="lg:w-1/3 flex items-center justify-center lg:justify-end text-4xl md:text-5xl lg:text-6xl font-semibold text-center mt-1 md:mt-0 lg:-mt-2">
         {data.city}
       </div>
     </div>
