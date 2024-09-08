@@ -4,11 +4,11 @@ const PlaceDetails = ({ selectedPlace }) => {
   if (!selectedPlace) return <div>Select a place to see details</div>;
 
   return (
-    <div className="p-2 w-[200px] mx-auto">  {/* Set fixed width to 200px */}
+    <div className="p-2 max-w-xs mx-auto">  {/* Narrow the width */}
       <img 
         src={selectedPlace.image} 
         alt={selectedPlace.name} 
-        className="w-full h-32 object-cover rounded-md" 
+        className="w-full h-20 object-cover rounded-md" 
       />
       <h2 className="text-xl font-semibold mt-2">{selectedPlace.name}</h2>
       <p className="text-sm text-gray-600">{selectedPlace.rating} stars ({selectedPlace.reviews} reviews)</p>

@@ -4,7 +4,7 @@ const PlaceDetails = ({ selectedPlace }) => {
   if (!selectedPlace) return <div>Select a place to see details</div>;
 
   return (
-    <div className="p-2 w-[200px] mx-auto">  {/* Set fixed width to 200px */}
+    <div className="p-2 max-w-xs mx-auto">  
       <img 
         src={selectedPlace.image} 
         alt={selectedPlace.name} 
