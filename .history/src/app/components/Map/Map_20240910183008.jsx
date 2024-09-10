@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import { APP_GOOGLE_MAP_KEY } from "../../../config"; // Import the Google Maps key from config
+import { APP_GOOGLE_MAP_KEY } from "./config"; // Import the Google Maps key from config
 
 const Map = () => {
   const coordinates = { lat: 0, lng: 0 };
