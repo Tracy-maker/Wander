@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Header from "../components/Header/Header";
 import List from "../components/List/List";
 import Map from "../components/Map/Map";
 import getPlacesData from "../../utils/getPlacesData";
@@ -24,22 +25,24 @@ const Maps = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen">
-      {/* List Section */}
-      <div className="lg:w-2/5 w-full lg:h-full h-1/2 overflow-y-auto bg-gray-300">
-        <List
-          places={filteredPlaces}
-          onPlaceClick={handlePlaceClick}
-          selectedPlace={selectedPlace}
-          onSearch={handleSearch}  
-        />
-      </div>
+    <>
+      <Header onSearch={handleSearch} />
+      <div className="flex flex-col lg:flex-row h-screen">
+        {/* List Section */}
+        <div className="lg:w-1/3 w-1/2 lg:h-full h-1/2 overflow-y-auto bg-gray-300">
+          <List
+            places={filteredPlaces}
+            onPlaceClick={handlePlaceClick}
+            selectedPlace={selectedPlace}
+          />
+        </div>
 
-    
-      <div className="lg:w-3/5 w-full lg:h-full h-1/2">
-        <Map places={filteredPlaces} onPlaceClick={handlePlaceClick} />
+        {/* Map Section */}
+        <div className="lg:w-2/3 w-full lg:h-full h-1/2">
+          <Map places={filteredPlaces} onPlaceClick={handlePlaceClick} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

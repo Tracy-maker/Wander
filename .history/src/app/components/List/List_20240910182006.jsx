@@ -15,7 +15,7 @@ const List = ({ places, type, setType, rating, setRating, childClicked, isLoadin
       <Header onSearch={onSearch} />
 
       {/* List Content with Filters and Places */}
-      <div className="flex-grow p-6 mt-40">  
+      <div className="flex-grow p-6 mt-10">  {/* Increased mt-5 to mt-10 */}
         <h4 className="text-2xl font-semibold mb-4">Food & Dining around you</h4>
 
         {isLoading ? (
@@ -61,13 +61,4 @@ const List = ({ places, type, setType, rating, setRating, childClicked, isLoadin
                 <div ref={elRefs[i]} key={i} className="w-full">
                   <PlaceDetails selected={Number(childClicked) === i} refProp={elRefs[i]} place={place} />
                 </div>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default List;
+             

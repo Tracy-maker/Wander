@@ -31,11 +31,11 @@ const Maps = () => {
           places={filteredPlaces}
           onPlaceClick={handlePlaceClick}
           selectedPlace={selectedPlace}
-          onSearch={handleSearch}  
+          onSearch={handleSearch}  // Passing the handleSearch to List
         />
       </div>
 
-    
+      {/* Map Section */}
       <div className="lg:w-3/5 w-full lg:h-full h-1/2">
         <Map places={filteredPlaces} onPlaceClick={handlePlaceClick} />
       </div>

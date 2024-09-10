@@ -26,17 +26,17 @@ const Maps = () => {
   return (
     <div className="flex flex-col lg:flex-row h-screen">
       {/* List Section */}
-      <div className="lg:w-2/5 w-full lg:h-full h-1/2 overflow-y-auto bg-gray-300">
+      <div className="lg:w-1/3 w-full lg:h-full h-1/2 overflow-y-auto bg-gray-300">
         <List
           places={filteredPlaces}
           onPlaceClick={handlePlaceClick}
           selectedPlace={selectedPlace}
-          onSearch={handleSearch}  
+          onSearch={handleSearch}  // Passing the handleSearch to List
         />
       </div>
 
-    
-      <div className="lg:w-3/5 w-full lg:h-full h-1/2">
+      {/* Map Section */}
+      <div className="lg:w-2/3 w-full lg:h-full h-1/2">
         <Map places={filteredPlaces} onPlaceClick={handlePlaceClick} />
       </div>
     </div>

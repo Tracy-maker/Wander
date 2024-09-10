@@ -8,7 +8,7 @@ const Header = ({ onSearch }) => {
   };
 
   return (
-    <header className="bg-blue-600 mt-16 text-white p-4 flex items-center lg:w-2/5 w-full fixed">
+    <header className="bg-blue-600 mt-20 text-white p-4 flex items-center w-2/3 fixed">
       <div className="flex flex-row w-full items-center">
         <span className="text-sm mr-4">Explore new places</span>
         <input

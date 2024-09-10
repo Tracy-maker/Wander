@@ -9,7 +9,7 @@ const Map = () => {
   return (
     <div className="h-[85vh] w-full">
     <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
+        bootstrapURLKeys={{ key: "AIzaSyCg3Kdw9DI8uYXzfgeQXFu5Pq1oyk6CMcQ"}}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={14}

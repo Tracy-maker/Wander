@@ -15,7 +15,7 @@ const List = ({ places, type, setType, rating, setRating, childClicked, isLoadin
       <Header onSearch={onSearch} />
 
       {/* List Content with Filters and Places */}
-      <div className="flex-grow p-6 mt-40">  
+      <div className="flex-grow p-6 pt-50">
         <h4 className="text-2xl font-semibold mb-4">Food & Dining around you</h4>
 
         {isLoading ? (
