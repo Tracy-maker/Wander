@@ -12,7 +12,7 @@ const Maps = () => {
 
   useEffect(() => {
     getPlacesData().then((data) => setPlaces(data));
-  }, [coordinates, bounds]);
+  }, []);
 
   const handlePlaceClick = (place) => {
     setSelectedPlace(place);
@@ -39,13 +39,7 @@ const Maps = () => {
 
       {/* Map Section */}
       <div className="lg:w-4/5 w-full lg:h-full h-1/2 ">
-        <Map
-          places={filteredPlaces}
-          onPlaceClick={handlePlaceClick}
-          setCoordinates={setCoordinates}
-          setBounds={setBounds}
-          coordinates={coordinates}
-        />
+        <Map places={filteredPlaces} onPlaceClick={handlePlaceClick} setCoordinates={setCoordinates}/>
       </div>
     </div>
   );

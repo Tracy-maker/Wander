@@ -12,7 +12,7 @@ const Maps = () => {
 
   useEffect(() => {
     getPlacesData().then((data) => setPlaces(data));
-  }, [coordinates, bounds]);
+  }, []);
 
   const handlePlaceClick = (place) => {
     setSelectedPlace(place);
@@ -44,7 +44,6 @@ const Maps = () => {
           onPlaceClick={handlePlaceClick}
           setCoordinates={setCoordinates}
           setBounds={setBounds}
-          coordinates={coordinates}
         />
       </div>
     </div>

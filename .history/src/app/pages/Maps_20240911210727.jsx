@@ -12,7 +12,7 @@ const Maps = () => {
 
   useEffect(() => {
     getPlacesData().then((data) => setPlaces(data));
-  }, [coordinates, bounds]);
+  }, [coodinates,bounds]);
 
   const handlePlaceClick = (place) => {
     setSelectedPlace(place);

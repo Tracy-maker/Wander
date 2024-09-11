@@ -2,7 +2,9 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import { APP_GOOGLE_MAP_KEY } from "../../../config";
 
-const Map = ({ setCoordinates, setBounds, coordinates }) => {
+const Map = ({ setCoordinates, setBounds,coordinates }) => {
+  const coordinates = { lat: 0, lng: 0 };
+
   return (
     <div className="h-[87vh] w-full">
       <GoogleMapReact
@@ -12,10 +14,7 @@ const Map = ({ setCoordinates, setBounds, coordinates }) => {
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
         options={""}
-        onChange={(e) => {
-          setCoordinates({ lat: e.center.lat, lng: e.center.lng });
-          setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
-        }}
+        onChange={""}
         onChildClick={""}
       ></GoogleMapReact>
     </div>

@@ -8,11 +8,10 @@ const Maps = () => {
   const [filteredPlaces, setFilteredPlaces] = useState(places);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [coordinates, setCoordinates] = useState(null);
-  const [bounds, setBounds] = useState(null);
 
   useEffect(() => {
     getPlacesData().then((data) => setPlaces(data));
-  }, [coordinates, bounds]);
+  }, []);
 
   const handlePlaceClick = (place) => {
     setSelectedPlace(place);
@@ -39,13 +38,7 @@ const Maps = () => {
 
       {/* Map Section */}
       <div className="lg:w-4/5 w-full lg:h-full h-1/2 ">
-        <Map
-          places={filteredPlaces}
-          onPlaceClick={handlePlaceClick}
-          setCoordinates={setCoordinates}
-          setBounds={setBounds}
-          coordinates={coordinates}
-        />
+        <Map places={filteredPlaces} onPlaceClick={handlePlaceClick} />
       </div>
     </div>
   );
