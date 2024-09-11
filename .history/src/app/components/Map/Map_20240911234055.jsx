@@ -1,10 +1,10 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import { APP_GOOGLE_MAP_KEY } from "../../../config";
-import { FaMapMarkerAlt, FaStar } from "react-icons/fa";
+import { FaMapMarkerAlt, FaStar } from "react-icons/fa"; // Imported FaStar for ratings
 
 const Map = ({ setCoordinates, setBounds, coordinates, places }) => {
-  const isDesktop = window.matchMedia("(min-width: 1000px)").matches;
+  const isDesktop = window.matchMedia("(min-width: 600px)").matches;
 
   return (
     <div className="h-[87vh] w-full">
@@ -19,7 +19,7 @@ const Map = ({ setCoordinates, setBounds, coordinates, places }) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-        onChildClick={(child) => {}}
+        onChildClick={null}
       >
         {places?.map((place, i) => (
           <div
@@ -40,7 +40,7 @@ const Map = ({ setCoordinates, setBounds, coordinates, places }) => {
                   src={
                     place?.photo?.images?.large?.url
                       ? place.photo.images.large.url
-                      : "https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"
+                      : "https://via.placeholder.com/150" // Use Placeholder.com
                   }
                   alt={place.name}
                 />

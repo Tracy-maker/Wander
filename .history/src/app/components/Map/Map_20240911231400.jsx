@@ -1,11 +1,10 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import { APP_GOOGLE_MAP_KEY } from "../../../config";
-import { FaMapMarkerAlt, FaStar } from "react-icons/fa";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Map = ({ setCoordinates, setBounds, coordinates, places }) => {
-  const isDesktop = window.matchMedia("(min-width: 1000px)").matches;
-
+  const isDesktop = window.matchMedia("(min-width: 600px)").matches;
   return (
     <div className="h-[87vh] w-full">
       <GoogleMapReact
@@ -19,9 +18,9 @@ const Map = ({ setCoordinates, setBounds, coordinates, places }) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-        onChildClick={(child) => {}}
+        onChildClick={""}
       >
-        {places?.map((place, i) => (
+        {places?.map((place, i) => {
           <div
             className="absolute transform -translate-x-1/2 -translate-y-1/2 z-10 hover:z-20"
             lat={Number(place.latitude)}
@@ -38,7 +37,7 @@ const Map = ({ setCoordinates, setBounds, coordinates, places }) => {
                 <img
                   className="w-20 h-20 object-cover mt-2"
                   src={
-                    place?.photo?.images?.large?.url
+                    place.photo
                       ? place.photo.images.large.url
                       : "https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"
                   }
@@ -47,14 +46,17 @@ const Map = ({ setCoordinates, setBounds, coordinates, places }) => {
                 <div className="flex items-center justify-center mt-1">
                   {Array.from({ length: Math.round(place.rating) }).map(
                     (_, index) => (
-                      <FaStar key={index} className="text-yellow-500 text-sm" />
+                      <FaMapMarkerAlt
+                        key={index}
+                        className="text-yellow-500 text-sm"
+                      />
                     )
                   )}
                 </div>
               </div>
             )}
-          </div>
-        ))}
+          </div>;
+        })}
       </GoogleMapReact>
     </div>
   );

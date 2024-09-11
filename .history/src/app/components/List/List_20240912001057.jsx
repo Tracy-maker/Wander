@@ -11,7 +11,7 @@ const List = ({ places, childClicked }) => {
   useEffect(() => {
     const refs = Array(places.length)
       .fill()
-      .map((_, i) => elRefs[i] || createRef());
+      .map((_, i) => elRefs[i] || createRef()); // Corrected array map function
     setElRefs(refs);
   }, [places]);
 
@@ -29,7 +29,7 @@ const List = ({ places, childClicked }) => {
         <div className="flex flex-col gap-6 mt-2 overflow-y-auto h-[605px] scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200">
           {places?.map((place, i) => (
             <div
-              ref={elRefs[i]} 
+              ref={elRefs[i]} // Pass the ref to each place component for smooth scrolling
               key={i}
               className="bg-white rounded-lg p-2"
             >

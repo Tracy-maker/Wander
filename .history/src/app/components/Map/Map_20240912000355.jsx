@@ -1,7 +1,7 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import { APP_GOOGLE_MAP_KEY } from "../../../config";
-import { FaMapMarkerAlt, FaStar } from "react-icons/fa";
+import { FaMapMarkerAlt, FaStar } from "react-icons/fa"; // Imported FaStar for ratings
 
 const Map = ({ setCoordinates, setBounds, coordinates, places }) => {
   const isDesktop = window.matchMedia("(min-width: 1000px)").matches;

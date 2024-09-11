@@ -11,7 +11,7 @@ const List = ({ places, childClicked }) => {
   useEffect(() => {
     const refs = Array(places.length)
       .fill()
-      .map((_, i) => elRefs[i] || createRef());
+      .map((_, i) => elRefs[i] || createRef()); // Corrected array map function
     setElRefs(refs);
   }, [places]);
 

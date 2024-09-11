@@ -47,7 +47,6 @@ const Maps = () => {
           onPlaceClick={handlePlaceClick}
           selectedPlace={selectedPlace}
           onSearch={handleSearch}
-          childClicked={childClicked}
         />
       </div>
 

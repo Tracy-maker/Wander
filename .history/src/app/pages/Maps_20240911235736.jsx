@@ -47,7 +47,6 @@ const Maps = () => {
           onPlaceClick={handlePlaceClick}
           selectedPlace={selectedPlace}
           onSearch={handleSearch}
-          childClicked={childClicked}
         />
       </div>
 
@@ -59,7 +58,7 @@ const Maps = () => {
           setCoordinates={setCoordinates}
           setBounds={setBounds}
           coordinates={coordinates}
-          setChildClicked={setChildClicked}
+          childClicked={childClicked}
         />
       </div>
     </div>
