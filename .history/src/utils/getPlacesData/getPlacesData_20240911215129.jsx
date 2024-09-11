@@ -1,6 +1,10 @@
 import axios from "axios";
 import {
   MAP_RAPIDAPI_URL,
+  MAP_BL_LATITUDE,
+  MAP_TR_LATITUDE,
+  MAP_BL_LONGITUDE,
+  MAP_TR_LONGITUDE,
   MAP_RAPIDAPI_KEY,
   MAP_RAPIDAPI_HOST,
 } from "../../config";

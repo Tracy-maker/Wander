@@ -76,13 +76,13 @@ const PlaceDetails = ({ place }) => {
 
       <div className="p-4 flex justify-between">
         <button
-          className="bg-blue-500 text-white px-3 py-1 rounded"
+          className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
           onClick={() => window.open(place.web_url, "_blank")}
         >
           Trip Advisor
         </button>
         <button
-          className="bg-blue-500 text-white px-3 py-1 rounded"
+          className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
           onClick={() => window.open(place.website, "_blank")}
         >
           Website

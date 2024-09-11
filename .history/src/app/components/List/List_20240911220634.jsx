@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, createRef } from "react";
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import Header from "../Header/Header";
 import Filters from "../Filters/Filters";
@@ -6,7 +6,6 @@ import Filters from "../Filters/Filters";
 const List = ({ places }) => {
   const [type, setTypes] = useState("restaurants");
   const [rating, setRating] = useState("");
-
   return (
     <div className="flex flex-col h-full w-full rounded-lg shadow-md max-w-screen-lg mx-auto">
       {/* Header */}
@@ -18,9 +17,9 @@ const List = ({ places }) => {
         <Filters type={type} rating={rating} setRating={setRating} />
 
         {/* Scrollable list of places */}
-        <div className="flex flex-col gap-6 mt-2 overflow-y-auto h-[605px] scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2 overflow-auto h-full">
           {places?.map((place, i) => (
-            <div key={i} className="bg-white rounded-lg p-2 ">
+            <div key={i}"bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out transform hover:scale-105">
               <PlaceDetails place={place} />
             </div>
           ))}

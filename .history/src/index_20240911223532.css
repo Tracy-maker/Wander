@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+<div className="lg:w-2/5 w-full lg:h-full h-1/2 overflow-y-auto bg-gray-200 scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200">
+  <List
+    places={places}
+    onPlaceClick={handlePlaceClick}
+    selectedPlace={selectedPlace}
+    onSearch={handleSearch}
+  />
+</div>

@@ -1,7 +1,11 @@
 import React from "react";
-import { FaMapMarkerAlt, FaPhone, FaStar } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhone } from "react-icons/fa";
+import { Rating } from "@material-ui/lab";
 
-const PlaceDetails = ({ place }) => {
+const PlaceDetails = ({ place, selected, refProp }) => {
+  if (selected)
+    refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden mb-6">
       <img
@@ -16,14 +20,7 @@ const PlaceDetails = ({ place }) => {
       <div className="p-4">
         <h5 className="text-xl font-semibold mb-2">{place.name}</h5>
         <div className="flex justify-between items-center my-2">
-          <div className="flex">
-            {/* Show star icons based on the rating */}
-            {Array(Math.round(Number(place.rating) || 0))
-              .fill()
-              .map((_, i) => (
-                <FaStar key={i} className="text-yellow-500" />
-              ))}
-          </div>
+          <Rating name="read-only" value={Number(place.rating)} readOnly />
           <p>
             {place.num_reviews} review{place.num_reviews > 1 && "s"}
           </p>
@@ -76,13 +73,13 @@ const PlaceDetails = ({ place }) => {
 
       <div className="p-4 flex justify-between">
         <button
-          className="bg-blue-500 text-white px-3 py-1 rounded"
+          className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
           onClick={() => window.open(place.web_url, "_blank")}
         >
           Trip Advisor
         </button>
         <button
-          className="bg-blue-500 text-white px-3 py-1 rounded"
+          className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
           onClick={() => window.open(place.website, "_blank")}
         >
           Website

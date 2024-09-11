@@ -1,5 +1,27 @@
 import React from "react";
-import { FaMapMarkerAlt, FaPhone, FaStar } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhone, FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+
+const getStars = (rating) => {
+  const fullStars = Math.floor(rating);
+  const halfStars = rating % 1 !== 0;
+  const emptyStars = 5 - fullStars - (halfStars ? 1 : 0);
+
+  return (
+    <>
+      {Array(fullStars)
+        .fill()
+        .map((_, i) => (
+          <FaStar key={`full-${i}`} className="text-yellow-500" />
+        ))}
+      {halfStars && <FaStarHalfAlt className="text-yellow-500" />}
+      {Array(emptyStars)
+        .fill()
+        .map((_, i) => (
+          <FaRegStar key={`empty-${i}`} className="text-yellow-500" />
+        ))}
+    </>
+  );
+};
 
 const PlaceDetails = ({ place }) => {
   return (
@@ -16,17 +38,8 @@ const PlaceDetails = ({ place }) => {
       <div className="p-4">
         <h5 className="text-xl font-semibold mb-2">{place.name}</h5>
         <div className="flex justify-between items-center my-2">
-          <div className="flex">
-            {/* Show star icons based on the rating */}
-            {Array(Math.round(Number(place.rating) || 0))
-              .fill()
-              .map((_, i) => (
-                <FaStar key={i} className="text-yellow-500" />
-              ))}
-          </div>
-          <p>
-            {place.num_reviews} review{place.num_reviews > 1 && "s"}
-          </p>
+          <div className="flex items-center">{getStars(Number(place.rating))}</div>
+          <p>{place.num_reviews} review{place.num_reviews > 1 && "s"}</p>
         </div>
         <div className="flex justify-between items-center">
           <p className="text-gray-500">Price</p>
@@ -76,13 +89,13 @@ const PlaceDetails = ({ place }) => {
 
       <div className="p-4 flex justify-between">
         <button
-          className="bg-blue-500 text-white px-3 py-1 rounded"
+          className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
           onClick={() => window.open(place.web_url, "_blank")}
         >
           Trip Advisor
         </button>
         <button
-          className="bg-blue-500 text-white px-3 py-1 rounded"
+          className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
           onClick={() => window.open(place.website, "_blank")}
         >
           Website

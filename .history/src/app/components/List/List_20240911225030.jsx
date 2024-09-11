@@ -20,7 +20,7 @@ const List = ({ places }) => {
         {/* Scrollable list of places */}
         <div className="flex flex-col gap-6 mt-2 overflow-y-auto h-[605px] scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200">
           {places?.map((place, i) => (
-            <div key={i} className="bg-white rounded-lg p-2 ">
+            <div key={i} className="bg-white rounded-lg p-4 shadow-md ">
               <PlaceDetails place={place} />
             </div>
           ))}

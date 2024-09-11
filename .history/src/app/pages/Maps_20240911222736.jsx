@@ -40,14 +40,15 @@ const Maps = () => {
   return (
     <div className="flex flex-col lg:flex-row h-full min-h-screen pt-[80px] pb-8">
       {/* List Section */}
-      <div className="lg:w-2/5 w-full lg:h-full h-1/2 overflow-y-auto bg-gray-200 custom-scrollbar">
-        <List
-          places={places}
-          onPlaceClick={handlePlaceClick}
-          selectedPlace={selectedPlace}
-          onSearch={handleSearch}
-        />
-      </div>
+      <div className="lg:w-2/5 w-full lg:h-full h-1/2 overflow-y-auto bg-gray-200">
+  <List
+    places={places}
+    onPlaceClick={handlePlaceClick}
+    selectedPlace={selectedPlace}
+    onSearch={handleSearch}
+  />
+</div>
+
 
       {/* Map Section */}
       <div className="lg:w-4/5 w-full lg:h-full h-1/2 ">
