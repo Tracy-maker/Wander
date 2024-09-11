@@ -19,17 +19,16 @@ const Maps = () => {
   }, []);
 
   useEffect(() => {
-    if (bounds) {
-      getPlacesData(bounds.sw, bounds.ne).then((data) => {
-        console.log(data);
-        setPlaces(data);
-      });
-    }
+    getPlacesData(bounds.sw, bounds.ne).then((data) => {
+      console.log(data); // Log the data to inspect the result
+      setPlaces(data);   // Update the state with the places data
+    });
   }, [coordinates, bounds]);
 
   const handlePlaceClick = (place) => {
     setSelectedPlace(place);
   };
+◊
   const handleSearch = (query) => {
     const filtered = places.filter((place) =>
       place.name.toLowerCase().includes(query.toLowerCase())

@@ -22,7 +22,7 @@ const Maps = () => {
     if (bounds) {
       getPlacesData(bounds.sw, bounds.ne).then((data) => {
         console.log(data);
-        setPlaces(data);
+        setPlaces(data); 
       });
     }
   }, [coordinates, bounds]);

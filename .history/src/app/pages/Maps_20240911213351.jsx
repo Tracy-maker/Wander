@@ -5,31 +5,23 @@ import getPlacesData from "../../utils/getPlacesData";
 
 const Maps = () => {
   const [places, setPlaces] = useState([]);
-  const [filteredPlaces, setFilteredPlaces] = useState(places);
+  const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [selectedPlace, setSelectedPlace] = useState(null);
-  const [coordinates, setCoordinates] = useState(null);
-  const [bounds, setBounds] = useState(null);
+  
+  // Initialize coordinates with default values (latitude and longitude)
+  const [coordinates, setCoordinates] = useState({ lat: 40.7128, lng: -74.0060 }); // Default to New York
+  const [bounds, setBounds] = useState({});
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      ({ coords: { latitude, longitude } }) => {
-        setCoordinates({ lat: latitude, lng: longitude });
-      }
-    );
-  }, []);
-
-  useEffect(() => {
-    if (bounds) {
-      getPlacesData(bounds.sw, bounds.ne).then((data) => {
-        console.log(data);
-        setPlaces(data);
-      });
+    if (bounds.ne && bounds.sw) {
+      getPlacesData(bounds.ne, bounds.sw).then((data) => setPlaces(data));
     }
   }, [coordinates, bounds]);
 
   const handlePlaceClick = (place) => {
     setSelectedPlace(place);
   };
+
   const handleSearch = (query) => {
     const filtered = places.filter((place) =>
       place.name.toLowerCase().includes(query.toLowerCase())
@@ -42,7 +34,7 @@ const Maps = () => {
       {/* List Section */}
       <div className="lg:w-2/5 w-full lg:h-full h-1/2 overflow-y-auto bg-gray-200">
         <List
-          places={filteredPlaces}
+          places={filteredPlaces.length ? filteredPlaces : places}
           onPlaceClick={handlePlaceClick}
           selectedPlace={selectedPlace}
           onSearch={handleSearch}
@@ -50,9 +42,9 @@ const Maps = () => {
       </div>
 
       {/* Map Section */}
-      <div className="lg:w-4/5 w-full lg:h-full h-1/2 ">
+      <div className="lg:w-4/5 w-full lg:h-full h-1/2">
         <Map
-          places={filteredPlaces}
+          places={filteredPlaces.length ? filteredPlaces : places}
           onPlaceClick={handlePlaceClick}
           setCoordinates={setCoordinates}
           setBounds={setBounds}

@@ -10,26 +10,23 @@ const Maps = () => {
   const [coordinates, setCoordinates] = useState(null);
   const [bounds, setBounds] = useState(null);
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      ({ coords: { latitude, longitude } }) => {
-        setCoordinates({ lat: latitude, lng: longitude });
-      }
-    );
-  }, []);
+  useEffect(()={
+   navigator.geolocation.getCurrentPosition(({coords:{latitude,longitude}})=>{
+    setCoordinates({lat:latitude,lng:longitude});
+   })
+  },[])
+ 
+
 
   useEffect(() => {
-    if (bounds) {
-      getPlacesData(bounds.sw, bounds.ne).then((data) => {
-        console.log(data);
-        setPlaces(data);
-      });
-    }
+    console.log(coordinates, bounds);
+    getPlacesData().then((data) => setPlaces(data));
   }, [coordinates, bounds]);
 
   const handlePlaceClick = (place) => {
     setSelectedPlace(place);
   };
+
   const handleSearch = (query) => {
     const filtered = places.filter((place) =>
       place.name.toLowerCase().includes(query.toLowerCase())
