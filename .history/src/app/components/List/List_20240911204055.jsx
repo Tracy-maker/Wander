@@ -28,7 +28,7 @@ const List = ({
       <Header onSearch={onSearch} />
 
       {/* Filters and List */}
-      <div className="flex-grow mt-20 p-2">
+      <div className="flex-grow mt-18 p-2">
         {/* Filters */}
         <Filters
           type={type}

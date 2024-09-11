@@ -24,9 +24,9 @@ const Maps = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row h-full min-h-screen pt-[80px] pb-8">
+    <div className="flex flex-col lg:flex-row h-full min-h-screen pt-10 pb-8">
       {/* List Section */}
-      <div className="lg:w-2/5 w-full lg:h-full h-1/2 overflow-y-auto bg-gray-200">
+      <div className="lg:w-2/5 w-full lg:h-full h-1/2 overflow-y-auto bg-gray-100">
         <List
           places={filteredPlaces}
           onPlaceClick={handlePlaceClick}
