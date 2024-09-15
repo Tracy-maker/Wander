@@ -74,25 +74,32 @@ const Weather = () => {
   return (
     <div
       className="min-h-screen w-screen flex flex-col justify-center items-center bg-cover bg-center relative overflow-y-auto"
-      style={{ backgroundImage: `url(${p1})` }}
+      style={{ backgroundImage: `url(${p1})` }} 
     >
-      <div className="flex flex-col md:flex-row w-full max-w-6xl items-center justify-between space-y-6 md:space-y-0 md:space-x-8 sm:mt-16">
-        {" "}
-        {/* Reduced margin-top */}
+      <div className="flex flex-col md:flex-row w-full max-w-6xl items-center justify-between space-y-6 md:space-y-0 md:space-x-8 sm:mt-16"> {/* Reduced margin-top */}
         <div className="w-full md:w-1/3">
           <LocationSearch
             onSearchChange={handleOnSearchChange}
             onCurrentLocationClick={handleCurrentLocationClick}
           />
         </div>
+
         <div className="w-full md:w-2/3 bg-white bg-opacity-90 rounded-2xl shadow-xl p-1 text-gray-800">
-          {currentWeather ? <Current data={currentWeather} /> : <Loading />}
+          {currentWeather ? (
+            <Current data={currentWeather} />
+          ) : (
+            <Loading />
+          )}
         </div>
       </div>
 
       <div className="w-full max-w-4xl mt-4">
         <div className="bg-white bg-opacity-90 rounded-2xl shadow-xl p-1">
-          {forecast ? <Forecast data={forecast} /> : <Loading />}
+          {forecast ? (
+            <Forecast data={forecast} />
+          ) : (
+            <Loading />
+          )}
         </div>
       </div>
     </div>
