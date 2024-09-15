@@ -28,7 +28,7 @@ const Maps = () => {
   }, []);
 
   // Debounced function to fetch places data
-  const debouncedGetPlacesData = debounce(() => {
+  const fetchPlacesData = () => {
     if (bounds.sw && bounds.ne) {
       setIsLoading(true);
       getPlacesData(type, bounds.sw, bounds.ne)
@@ -45,18 +45,21 @@ const Maps = () => {
           console.error("Error fetching places data:", error);
         });
     }
-  }, 1000);
+  };
+
+  // Create a debounced version of the fetch function
+  const debouncedFetchPlacesData = debounce(fetchPlacesData, 1000);
 
   // Fetch data when type or bounds change
   useEffect(() => {
     if (bounds.sw && bounds.ne) {
-      debouncedGetPlacesData();
+      debouncedFetchPlacesData();
     }
+
     return () => {
-      debouncedGetPlacesData.cancel();
+      debouncedFetchPlacesData.cancel();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [type, bounds]);
+  }, [type, bounds]); // Dependencies
 
   // Filter places based on rating
   useEffect(() => {

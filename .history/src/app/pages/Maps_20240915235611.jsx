@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { LoadScript } from "@react-google-maps/api";
 import List from "../components/List/List";
 import Map from "../components/Map/Map";
 import getPlacesData from "../../utils/getPlacesData";
@@ -55,7 +56,6 @@ const Maps = () => {
     return () => {
       debouncedGetPlacesData.cancel();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, bounds]);
 
   // Filter places based on rating

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { LoadScript } from "@react-google-maps/api";
 import List from "../components/List/List";
 import Map from "../components/Map/Map";
 import getPlacesData from "../../utils/getPlacesData";
@@ -55,7 +56,6 @@ const Maps = () => {
     return () => {
       debouncedGetPlacesData.cancel();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, bounds]);
 
   // Filter places based on rating
@@ -80,36 +80,38 @@ const Maps = () => {
       }
     }
   };
-
+  
   return (
-    <div className="flex flex-col lg:flex-row h-full min-h-screen pt-[80px] pb-8">
-      {/* Header Section */}
-      <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />
 
-      {/* List Section */}
-      <div className="lg:w-2/5 w-full lg:h-full h-1/2 overflow-y-auto bg-gray-200 custom-scrollbar">
-        <List
-          places={filteredPlaces.length ? filteredPlaces : places}
-          rating={rating}
-          childClicked={childClicked}
-          isLoading={isLoading}
-          type={type}
-          setType={setType}
-          setRating={setRating}
-        />
-      </div>
+      <div className="flex flex-col lg:flex-row h-full min-h-screen pt-[80px] pb-8">
+        {/* Header Section */}
+        <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />
 
-      {/* Map Section */}
-      <div className="lg:w-4/5 w-full lg:h-full h-1/2">
-        <Map
-          places={filteredPlaces.length ? filteredPlaces : places}
-          setCoords={setCoords}
-          setBounds={setBounds}
-          coords={coords}
-          setChildClicked={setChildClicked}
-        />
+        {/* List Section */}
+        <div className="lg:w-2/5 w-full lg:h-full h-1/2 overflow-y-auto bg-gray-200 custom-scrollbar">
+          <List
+            places={filteredPlaces.length ? filteredPlaces : places}
+            rating={rating}
+            childClicked={childClicked}
+            isLoading={isLoading}
+            type={type}
+            setType={setType}
+            setRating={setRating}
+          />
+        </div>
+
+        {/* Map Section */}
+        <div className="lg:w-4/5 w-full lg:h-full h-1/2">
+          <Map
+            places={filteredPlaces.length ? filteredPlaces : places}
+            setCoords={setCoords}
+            setBounds={setBounds}
+            coords={coords}
+            setChildClicked={setChildClicked}
+          />
+        </div>
       </div>
-    </div>
+    </LoadScript>
   );
 };
 

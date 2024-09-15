@@ -55,7 +55,6 @@ const Maps = () => {
     return () => {
       debouncedGetPlacesData.cancel();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, bounds]);
 
   // Filter places based on rating

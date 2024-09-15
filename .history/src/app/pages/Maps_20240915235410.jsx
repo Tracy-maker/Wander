@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import List from "../components/List/List";
 import Map from "../components/Map/Map";
 import getPlacesData from "../../utils/getPlacesData";
@@ -27,25 +27,28 @@ const Maps = () => {
     );
   }, []);
 
-  // Debounced function to fetch places data
-  const debouncedGetPlacesData = debounce(() => {
-    if (bounds.sw && bounds.ne) {
-      setIsLoading(true);
-      getPlacesData(type, bounds.sw, bounds.ne)
-        .then((data) => {
-          const validPlaces = data.filter(
-            (place) => place.name && place.num_reviews > 0
-          );
-          setPlaces(validPlaces);
-          setFilteredPlaces([]);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          setIsLoading(false);
-          console.error("Error fetching places data:", error);
-        });
-    }
-  }, 1000);
+  // Debounced function to fetch places data (memoized with useCallback)
+  const debouncedGetPlacesData = useCallback(
+    debounce(() => {
+      if (bounds.sw && bounds.ne) {
+        setIsLoading(true);
+        getPlacesData(type, bounds.sw, bounds.ne)
+          .then((data) => {
+            const validPlaces = data.filter(
+              (place) => place.name && place.num_reviews > 0
+            );
+            setPlaces(validPlaces);
+            setFilteredPlaces([]);
+            setIsLoading(false);
+          })
+          .catch((error) => {
+            setIsLoading(false);
+            console.error("Error fetching places data:", error);
+          });
+      }
+    }, 1000),
+    [bounds, type] 
+  );
 
   // Fetch data when type or bounds change
   useEffect(() => {
@@ -55,8 +58,7 @@ const Maps = () => {
     return () => {
       debouncedGetPlacesData.cancel();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [type, bounds]);
+  }, [debouncedGetPlacesData, bounds]);
 
   // Filter places based on rating
   useEffect(() => {
