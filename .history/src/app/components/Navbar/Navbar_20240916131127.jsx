@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { FaUserCircle } from "react-icons/fa";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"; 
+import { FaUserCircle } from "react-icons/fa"; 
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
@@ -53,7 +53,6 @@ const Navbar = () => {
             >
               Maps
             </Link>
-            {/* Add Time Link */}
             <Link
               to="/time"
               className="hover:text-gray-600 transition duration-300"
@@ -126,13 +125,6 @@ const Navbar = () => {
                 onClick={toggleMenu}
               >
                 Maps
-              </Link>
-              <Link
-                to="/time"
-                className="hover:text-gray-600 transition duration-300"
-                onClick={toggleMenu}
-              >
-                Time
               </Link>
               <div className="flex justify-between items-center border-t border-gray-300 pt-4">
                 <Link

@@ -53,9 +53,8 @@ const Navbar = () => {
             >
               Maps
             </Link>
-            {/* Add Time Link */}
             <Link
-              to="/time"
+              to="/times"
               className="hover:text-gray-600 transition duration-300"
             >
               Time
@@ -126,13 +125,6 @@ const Navbar = () => {
                 onClick={toggleMenu}
               >
                 Maps
-              </Link>
-              <Link
-                to="/time"
-                className="hover:text-gray-600 transition duration-300"
-                onClick={toggleMenu}
-              >
-                Time
               </Link>
               <div className="flex justify-between items-center border-t border-gray-300 pt-4">
                 <Link

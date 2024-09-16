@@ -11,8 +11,7 @@ import Weather from "./app/pages/Weather";
 
 import Profile from "./app/pages/Profile";
 import Maps from "./app/pages/Maps";
-import Time from "./app/pages/TimeDisplay";
-import TimeDisplay from "./app/pages/TimeDisplay";
+import Time from "./app/pages/Time";
 
 function App() {
   return (
@@ -28,7 +27,7 @@ function App() {
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/" element={<Home />} />
             <Route path="/weather" element={<Weather />} />
-            <Route path="/times" element={<TimeDisplay />} />
+            <Route path="/time" element={<Time/>} />
             <Route path="/maps" element={<Maps />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/update-profile" element={<UpdateProfile />} />

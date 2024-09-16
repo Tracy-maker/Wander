@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
+import TimeDisplay from "../TimeDisplay"; // Import the TimeDisplay component
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
