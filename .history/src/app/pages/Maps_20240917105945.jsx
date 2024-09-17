@@ -16,7 +16,7 @@ const Maps = () => {
   const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState("");
   const [autocomplete, setAutocomplete] = useState(null);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null);  // State to store the error message
 
   useEffect(() => {
     console.log("Coordinates:", coords);
@@ -52,15 +52,13 @@ const Maps = () => {
 
           // Check for 429 Too Many Requests error
           if (error.response && error.response.status === 429) {
-            setError(
-              "You have exceeded the API request limit. Please try again later."
-            );
+            setError("You have exceeded the API request limit. Please try again later.");
           } else {
             console.error("Error fetching places data:", error);
           }
         });
     }
-  }, 2000);
+  }, 2000);  // Debounce with 2 seconds delay
 
   // Fetch data when type or bounds change
   useEffect(() => {
