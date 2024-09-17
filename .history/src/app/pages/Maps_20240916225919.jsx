@@ -16,13 +16,6 @@ const Maps = () => {
   const [rating, setRating] = useState("");
   const [autocomplete, setAutocomplete] = useState(null);
 
-  useEffect(() => {
-    console.log("Coordinates:", coords);
-    console.log("Bounds:", bounds);
-  }, [coords, bounds]);
-  
-
-
   // Set initial coordinates based on user's geolocation
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -34,33 +27,32 @@ const Maps = () => {
     );
   }, []);
 
-  // Debounced function to fetch places data
-  const debouncedGetPlacesData = debounce(() => {
-    if (bounds.sw && bounds.ne) {
-      setIsLoading(true);
-      getPlacesData(type, bounds.sw, bounds.ne)
-        .then((data) => {
-          const validPlaces = data.filter(
-            (place) => place.name && place.num_reviews > 0
-          );
-          setPlaces(validPlaces);
-          setFilteredPlaces([]);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          setIsLoading(false);
+// Debounced function to fetch places data
+const debouncedGetPlacesData = debounce(() => {
+  if (bounds.sw && bounds.ne) {
+    setIsLoading(true);
+    getPlacesData(type, bounds.sw, bounds.ne)
+      .then((data) => {
+        const validPlaces = data.filter(
+          (place) => place.name && place.num_reviews > 0
+        );
+        setPlaces(validPlaces);
+        setFilteredPlaces([]);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsLoading(false);
 
-          // Check for 404 error and handle it
-          if (error.response && error.response.status === 404) {
-            alert(
-              "API returned a 404 error: Data not found. Please try again later or consider upgrading your plan."
-            );
-          } else {
-            console.error("Error fetching places data:", error);
-          }
-        });
-    }
-  }, 1000);
+        // Check for 404 error and handle it
+        if (error.response && error.response.status === 404) {
+          alert("API returned a 404 error: Data not found. Please try again later or consider upgrading your plan.");
+        } else {
+          console.error("Error fetching places data:", error);
+        }
+      });
+  }
+}, 1000);
+
 
   // Fetch data when type or bounds change
   useEffect(() => {

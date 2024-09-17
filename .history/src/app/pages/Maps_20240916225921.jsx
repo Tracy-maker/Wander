@@ -16,13 +16,6 @@ const Maps = () => {
   const [rating, setRating] = useState("");
   const [autocomplete, setAutocomplete] = useState(null);
 
-  useEffect(() => {
-    console.log("Coordinates:", coords);
-    console.log("Bounds:", bounds);
-  }, [coords, bounds]);
-  
-
-
   // Set initial coordinates based on user's geolocation
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
